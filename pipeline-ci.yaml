@@ -37,7 +37,10 @@ jobs:
   - task: DockerCompose@0
     displayName: Run Docker-compose-up
     inputs:
+      containerregistrytype: Container Registry
+      dockerComposeFile: $(Build.SourcesDirectory)/docker-compose.yaml
       dockerComposeCommand: 'up -d'
+
 
   - task: CmdLine@2
     displayName: 'ls'

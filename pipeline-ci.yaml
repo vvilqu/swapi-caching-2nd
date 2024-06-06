@@ -28,17 +28,15 @@ jobs:
     inputs:
       script: mv $(Build.SourcesDirectory)/.env.example $(Build.SourcesDirectory)/.env
 
-## Sekcja Artifacts i NPM
-#  - task: npmAuthenticate@0
-#    inputs:
-#      workingFile: .npmrc
-#      customEndpoint:
+# Sekcja Artifacts i NPM
+  - task: npmAuthenticate@0
+    inputs:
+    workingFile: .npmrc
+    customEndpoint:
 
   - task: DockerCompose@0
     displayName: Run Docker-compose-up
     inputs:
-      containerregistrytype: Container Registry
-      dockerComposeFile: $(Build.SourcesDirectory)/docker-compose.yaml
       dockerComposeCommand: 'up -d'
 
   - task: CmdLine@2
